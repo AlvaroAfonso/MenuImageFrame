@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package alvaroycarlos.menuimage;
+package alvaroycarlos.menuimageframe;
 
 import java.awt.Dimension;
 import java.awt.Graphics;
@@ -32,8 +32,8 @@ public class Lienzo extends JPanel{
     private int chosen = 0;
     private boolean redimension;
     
-    private final int widhtRescaled = 950;
-    private final int heigthRescaled = 694;
+    private final int widhtRescaled = 850;
+    private final int heigthRescaled = 594;
     
     public Lienzo(){
         this.setPreferredSize(new Dimension(widhtRescaled, heigthRescaled));
@@ -107,6 +107,15 @@ public class Lienzo extends JPanel{
     
     private BufferedImage resizeImg(BufferedImage original, int targetWidth, int targetHeight) {
         
+        /*double factor = (double) original.getWidth() / (double) original.getHeight();
+        
+        int width = 0;
+        int height = 0;
+        
+        if(){
+            
+        }*/
+        
         Image resultingImage = original.getScaledInstance(targetWidth, targetHeight, Image.SCALE_DEFAULT);
         
         BufferedImage outputImage = new BufferedImage(targetWidth, targetHeight, BufferedImage.TYPE_INT_RGB);
@@ -114,6 +123,25 @@ public class Lienzo extends JPanel{
         outputImage.getGraphics().drawImage(resultingImage, 0, 0, null);
         
         return outputImage;
+        
+        /*
+        double reason = (double) tempImage.width()/(double) tempImage.height();
+        int newHeight;
+        int newWidth;
+                
+        if (tempImage.width() >= tempImage.height()){            
+            newWidth = this.defaultWidth;
+            newHeight = (int) (newWidth/reason);
+        } else {
+            newHeight = this.defaultHeight;
+            newWidth = (int) (newHeight*reason);
+        }
+        
+        Mat tempM = new Mat();
+        Size tempS = new Size(newWidth, newHeight);
+        Imgproc.resize(tempImage, tempM, tempS);
+        return tempM;
+        */
     }
     
     public void umbralizar(int umbral){
